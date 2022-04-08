@@ -4,26 +4,46 @@
     padding: 0px;
 }
 
+.layout-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50px auto auto;
+}
+
+
 body {
     background-color: #13292A;
-}
-main {
-    position: relative;
-    margin-top: 50px;
 }
 
 
 /*HEADER*/
+
+header label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #191922;
+    font-weight: bold;
+    width: 100px;
+    height: 40px;
+    text-decoration: none;
+}
+header label:hover {
+    color: #988780;
+}
+.header-checkbox {
+    display: none;
+}
 header {
-    position: fixed;
+    position: sticky;
     display: flex;
     flex-direction: row;
     align-items: center;
     top: 0px;
     left: 0px;
     width: 100%;
+    height: 100%;
     background-color: white;
-    height: 50px;
     z-index: 1000;
 }
 .header-logo {
@@ -33,33 +53,27 @@ header {
 .header-nav {
     width: 100%;
     height: 100%;
-    margin-right: 10px;
     align-items: center;
     display: flex;
-    justify-content: flex-end;
 }
 .header-list {
     height: 100%;
     display: flex;
     align-items: center;
-    flex-direction: row;
     list-style-type: none;
 }
 .header-list-element {
     display: flex;
     color: #191922;
     font-weight: bold;
-    margin-left: 5px;
     width: 100px;
     height: 40px;
     align-items: center;
     justify-content: center;
-    border-left: 2px solid black;
     text-decoration: none;
 }
 .header-list-element:hover {
     color: #988780;
-    border-left: 2px solid #988780;
 }
 .list-element-text {
     color: inherit;
@@ -76,7 +90,7 @@ header {
     justify-content: center;
     left: 0px;
     width: 100%;
-    height: 100vh;
+    height: 30vh;
     background-color: black;
     overflow: hidden;
 }
@@ -111,9 +125,6 @@ header {
 }
 .content-box-img {
     object-fit: cover;
-    min-height: 100%;
-    min-width: 30%;
-    max-width: 40%;
 }
 .content-box-section {
     display: flex;
@@ -206,27 +217,49 @@ header {
 
 /*CONTACT-FORM*/
 .contact-form {
-    width: 60%;
     margin: 30px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-gap: 20px;
 }
 .contact-form fieldset {
     display: flex;
     align-items: center;
-    flex-direction: row;
     border: none;
-    margin-top: 10px;
 }
 .contact-form label {
-    margin-right: 5px;
-}
-.contact-form input , .contact-form select{
-    border: none;
     margin-right: 10px;
+}
+.contact-form input[type="text"], .contact-form input[type="email"], .contact-form select, .contact-form textarea{
+    resize: none;
+    border: none;
+    width: 100%;
     background-color: white;
     padding: 0.5em;
 }
+.form-name {
+    grid-area: name;
+}
+.form-email {
+    grid-area: mail;
+}
+.form-select {
+    grid-area: select;
+}
+.form-comment {
+    display: flex;
+    flex-direction: column;
+    grid-area: comment;
+}
+.form-checkbox{
+    grid-area: checkbox;
+}
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    grid-area: buttons;
+}
+
+
 .contact-form button {
     color: white;
     font-weight: bold;
@@ -252,4 +285,112 @@ footer {
     font-size: 14px;
     padding: 10px;
     color: #E7DED9;
+}
+
+
+
+
+/*MEDIA QUERY*/
+@media screen and (min-width: 200px){
+    .header-list {
+        display: none;
+    }
+    .header-nav {
+        position: absolute;
+        justify-content: center;
+    }
+    header label {
+        position: absolute;
+        flex-direction: column;
+        border: none;
+    }
+    .header-checkbox:checked ~ .header-list {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+    }
+    .header-checkbox:checked ~ .header-list .header-list-element{
+        background-color: lightgrey;
+    }
+    .hero-section-title {
+        font-size: 2em;
+    }
+    .body-content-box {
+        margin-top: 0px;
+        flex-direction: column-reverse;
+    }
+    .content-box-img {
+        object-fit: cover;
+        min-height: auto;
+        min-width: 100%;
+    }
+    .contact-form {
+        grid-template-areas: 
+        "name"
+        "mail"
+        "select"
+        "comment"
+        "checkbox"
+        "buttons";
+        grid-template-columns: 1fr;
+        grid-row: repeat(6, 100%);
+
+    }
+}
+@media screen and (min-width: 500px) {
+    .hero-section {
+        height: 40vh;
+    }
+    .hero-section-title {
+        font-size: 3em;
+    }
+}
+@media screen and (min-width: 800px) {
+    .header-list, .header-checkbox:checked ~ .header-list{
+        display: flex;
+        margin-top: 0px;
+        flex-direction: row;
+    }
+    .header-list-element, .header-checkbox:checked ~ .header-list .header-list-element {
+        border-left: 2px solid black;
+        background-color: transparent;
+    }
+    .header-list-element:hover,  .header-checkbox:checked ~ .header-list .header-list-element:hover{
+        border-left: 2px solid #988780;
+    }
+    header label {
+        display: none;
+    }
+    .header-nav {
+        justify-content: flex-end;
+    }
+    .hero-section {
+        height: 50vh;
+    }
+    .hero-section-title {
+        font-size: 4em;
+    }
+    .body-content-box {
+        margin-top: 10px;
+        flex-direction: row;
+    }
+    .content-box-img {
+        min-height: 100%;
+        min-width: 40%;
+        max-width: 50%;
+    }
+    .contact-form {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "name comment"
+        "mail comment"
+        "select comment"
+        "checkbox checkbox"
+        "buttons buttons";
+    }
+}
+@media screen and (min-width: 1200px) {
+    .hero-section {
+        height: 80vh;
+    }
 }

@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="../style/style.css">
     <title>ConcreteStart</title>
 </head>
-<body>
+<body class="layout-grid">
     <header>
         <img class="header-logo" src="../assets/logo.png"  alt="logo">
         <nav class="header-nav">
+            <label for="header-checkbox">Menu</label>
+            <input type="checkbox" id="header-checkbox" class="header-checkbox">
             <ul class="header-list">
                 <li><a class="header-list-element" href="../index.html"><span class="list-element-text">Inicio</span></a></li>
                 <li><a class="header-list-element" href="quienes-somos.html"><span class="list-element-text">Quienes Somos ?</span></a></li>
@@ -26,13 +28,19 @@
             <section class="content-box-section">
                 <h2 class="title-with-sidelines"><span class="title-with-sidelines-both">Contacto</span></h2>
                 <form class="contact-form">
-                    <fieldset>
+                    <fieldset class="form-name">
                         <label for="nombre">Nombre: </label>
                         <input id="nombre" required type="text" placeholder="Ingrese su nombre">
+                    </fieldset>
+                    <fieldset class="form-email">
                         <label for="email">email: </label>
                         <input id="email" required type="email" placeholder="ejemplo@email.com">
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="form-comment">
+                        <p>Comentario:</p>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </fieldset>
+                    <fieldset class="form-select">
                         <select>
                             <option hidden selected>Usted es ?</option>
                             <option>Individuo</option>
@@ -40,11 +48,11 @@
                             <option>Entidad Gubernamental</option>
                         </select>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="form-checkbox">
                         <label for="checkbox">Desea recibir notificaciones de ofertas o promociones ?</label>
                         <input id="checkbox" type="checkbox">
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="form-buttons">
                         <button type="reset">Limpiar formulario</button>
                         <button type="submit">Enviar formulario</button>
                     </fieldset>
