@@ -3,6 +3,16 @@
     margin: 0px;
     padding: 0px;
 }
+@keyframes button-animation {
+    0% {color: #191922;}
+    100% {color: #988780;}
+}
+@keyframes button-animation-borders {
+    0% {color: #191922;
+        border-left: 2px solid black;}
+    100% {color: #988780;
+        border-left: 2px solid #988780;}
+}
 
 .layout-grid {
     display: grid;
@@ -73,6 +83,8 @@ header {
     text-decoration: none;
 }
 .header-list-element:hover {
+    animation-name: button-animation;
+    animation-duration: 0.5s;
     color: #988780;
 }
 .list-element-text {
@@ -294,6 +306,9 @@ footer {
 
 
 
+
+
+
 /*MEDIA QUERY*/
 @media screen and (min-width: 200px){
     .header-list {
@@ -363,6 +378,8 @@ footer {
         background-color: transparent;
     }
     .header-list-element:hover,  .header-checkbox:checked ~ .header-list .header-list-element:hover{
+        animation-name: button-animation-borders;
+        animation-duration: 0.5s;
         border-left: 2px solid #988780;
     }
     header label {
